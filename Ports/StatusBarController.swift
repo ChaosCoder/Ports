@@ -8,24 +8,36 @@
 import Foundation
 import AppKit
 
-class StatusBarController {
+class StatusBarController: NSObject, NSPopoverDelegate {
+    
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
     private var popover: NSPopover
     
     init(_ popover: NSPopover) {
         self.popover = popover
+        
         statusBar = NSStatusBar.system
-        // Creating a status bar item having a fixed length
         statusItem = statusBar.statusItem(withLength: 20.0)
+        
+        super.init()
+        
+        popover.delegate = self
         
         if let statusBarButton = statusItem.button {
             statusBarButton.image = NSImage(named: "DataConsent")
             statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
             statusBarButton.image?.isTemplate = true
+            statusBarButton.setButtonType(.onOff)
             
-            statusBarButton.action = #selector(togglePopover(sender:))
-            statusBarButton.target = self
+            NSEvent.addLocalMonitorForEvents(matching: .leftMouseDown) { [weak self] event in
+                if event.window == self?.statusItem.button?.window {
+                    self?.togglePopover(sender: statusBarButton)
+                    return nil
+                }
+                
+                return event
+            }
         }
     }
     
@@ -40,11 +52,16 @@ class StatusBarController {
     
     func showPopover(_ sender: AnyObject) {
         if let statusBarButton = statusItem.button {
+            statusBarButton.highlight(true)
             popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
         }
     }
     
     func hidePopover(_ sender: AnyObject) {
         popover.performClose(sender)
+    }
+    
+    func popoverWillClose(_ notification: Notification) {
+        statusItem.button?.highlight(false)
     }
 }

@@ -36,6 +36,7 @@ struct ContentView<ViewModelType: MainViewModelType>: View {
                             exit(0)
                         }
                     })
+                    .frame(width: 20, height: 20)
                 .menuButtonStyle(BorderlessButtonMenuButtonStyle())
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
             }
