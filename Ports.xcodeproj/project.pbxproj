@@ -21,6 +21,7 @@
 		7D8D689C26434CB400FBFBDE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D689B26434CB400FBFBDE /* Process.swift */; };
 		7DAD2EDA2649AF0A00BD13D7 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */; };
 		7DE4F9FA266821BD00563FBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4F9F9266821BD00563FBB /* Localized.swift */; };
+		7DE4F9FD2668222600563FBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE4F9FF2668222600563FBB /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7D8D689B26434CB400FBFBDE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
 		7DE4F9F9266821BD00563FBB /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		7DE4F9FE2668222600563FBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				7D74D7FA26448030006DD547 /* PartialModels.swift */,
 				7D74D7FC26448391006DD547 /* ProcessManager.swift */,
 				7DE4F9F9266821BD00563FBB /* Localized.swift */,
+				7DE4F9FF2668222600563FBB /* Localizable.strings */,
 			);
 			path = Ports;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE4F9FD2668222600563FBB /* Localizable.strings in Resources */,
 				7D8D68882643393E00FBFBDE /* Main.storyboard in Resources */,
 				7D8D68852643393E00FBFBDE /* Preview Assets.xcassets in Resources */,
 				7D8D689326433B8200FBFBDE /* DataConsent.png in Resources */,
@@ -215,6 +219,14 @@
 				7D8D68872643393E00FBFBDE /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7DE4F9FF2668222600563FBB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DE4F9FE2668222600563FBB /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
