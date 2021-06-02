@@ -20,6 +20,7 @@
 		7D8D689726433FB300FBFBDE /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8D689626433FB300FBFBDE /* ShellOut */; };
 		7D8D689C26434CB400FBFBDE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D689B26434CB400FBFBDE /* Process.swift */; };
 		7DAD2EDA2649AF0A00BD13D7 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */; };
+		7DE4F9FA266821BD00563FBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4F9F9266821BD00563FBB /* Localized.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7D8D689226433B8200FBFBDE /* DataConsent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataConsent.png; sourceTree = "<group>"; };
 		7D8D689B26434CB400FBFBDE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
+		7DE4F9F9266821BD00563FBB /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				7D74D7F826447FF6006DD547 /* ProcessParser.swift */,
 				7D74D7FA26448030006DD547 /* PartialModels.swift */,
 				7D74D7FC26448391006DD547 /* ProcessManager.swift */,
+				7DE4F9F9266821BD00563FBB /* Localized.swift */,
 			);
 			path = Ports;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				7D74D7FB26448030006DD547 /* PartialModels.swift in Sources */,
 				7D8D68912643399000FBFBDE /* StatusBarController.swift in Sources */,
 				7D74D7FD26448391006DD547 /* ProcessManager.swift in Sources */,
+				7DE4F9FA266821BD00563FBB /* Localized.swift in Sources */,
 				7D8D687E2643393D00FBFBDE /* AppDelegate.swift in Sources */,
 				7D74D7F926447FF6006DD547 /* ProcessParser.swift in Sources */,
 				7DAD2EDA2649AF0A00BD13D7 /* ProcessView.swift in Sources */,

@@ -32,7 +32,10 @@ struct ContentView<ViewModelType: MainViewModelType>: View {
                 MenuButton(
                     label: Image(systemName: "gearshape.fill"),
                     content: {
-                        Button(NSLocalizedString("quit", comment: "")) {
+                        Button(LocalizedString("openWebsite")) {
+                            NSWorkspace.shared.open(URL(string: "https://chaosspace.de/ports?utm_source=portsapp")!)
+                        }
+                        Button(LocalizedString("quit")) {
                             exit(0)
                         }
                     })
