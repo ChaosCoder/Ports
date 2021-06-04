@@ -13,7 +13,7 @@ struct ProcessView: View {
     
     var item: Process
     
-    @State var hovered: Bool
+    @Binding var hovered: Process?
     @Binding var error: IdentifiableError?
     
     static let portFormatter: NumberFormatter = {
@@ -27,9 +27,9 @@ struct ProcessView: View {
             HStack(alignment: .firstTextBaseline) {
                 Text(item.name)
                     .font(.headline)
-                    .foregroundColor(hovered ? Color.accentColor : Color.primary)
+                    .foregroundColor(hovered == item ? Color.accentColor : Color.primary)
                 + Text(" (\(String(item.pid)))")
-                    .foregroundColor(hovered ? Color.accentColor : Color.secondary)
+                    .foregroundColor(hovered == item ? Color.accentColor : Color.secondary)
                     .font(.monospacedDigit(.body)())
                 Button(action: {
                     do {
@@ -38,7 +38,7 @@ struct ProcessView: View {
                         self.error = IdentifiableError(id: UUID(), error: error)
                     }
                 }, label: {
-                    if hovered {
+                    if hovered == item {
                         Image(systemName: "xmark.circle.fill")
                     } else {
                         Image(systemName: "xmark.circle.fill")
@@ -72,20 +72,24 @@ struct ProcessView: View {
             .layoutPriority(1)
         }
         .onHover { isHovered in
-            self.hovered = isHovered
+            if isHovered {
+                hovered = item
+            } else if hovered == item {
+                hovered = nil
+            }
         }
     }
 }
 
 struct ProcessView_Previews: PreviewProvider {
     static var previews: some View {
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv6, address: "127.0.0.1", port: 46040)]), hovered: false, error: .constant(nil))
+        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv6, address: "127.0.0.1", port: 46040)]), hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: false, error: .constant(nil))
+        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: true, error: .constant(nil))
+        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "A process with an Adobe name", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: true, error: .constant(nil))
+        ProcessView(item: Process(pid: 1, name: "A process with an Adobe name", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
     }
 }

@@ -18,11 +18,12 @@ struct IdentifiableError: Error, Identifiable {
 struct MainView<ViewModelType: MainViewModelType>: View {
     @ObservedObject var viewModel: ViewModelType
     @State var error: IdentifiableError?
+    @State var hoveredProcess: Process?
     
     var body: some View {
         VStack(alignment: .leading) {
             List(viewModel.processList.processes, id: \.id) { item in
-                ProcessView(item: item, hovered: false, error: $error)
+                ProcessView(item: item, hovered: $hoveredProcess, error: $error)
                     .onTapGesture {
                         viewModel.update()
                     }

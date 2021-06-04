@@ -29,6 +29,12 @@ struct Process {
     var sockets: [Socket]
 }
 
+extension Process: Equatable {
+    static func == (lhs: Process, rhs: Process) -> Bool {
+        return lhs.pid == rhs.pid
+    }
+}
+
 extension Process: Identifiable {
     var id: Int { pid }
 }
