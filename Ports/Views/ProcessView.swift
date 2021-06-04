@@ -14,7 +14,7 @@ struct ProcessView: View {
     var item: Process
     
     @State var hovered: Bool
-    @Binding var error: IdentiableError?
+    @Binding var error: IdentifiableError?
     
     static let portFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -35,7 +35,7 @@ struct ProcessView: View {
                     do {
                         try shellOut(to: "kill", arguments: ["\(item.pid)"])
                     } catch {
-                        self.error = IdentiableError(id: UUID(), error: error)
+                        self.error = IdentifiableError(id: UUID(), error: error)
                     }
                 }, label: {
                     if hovered {

@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let parser = ProcessParser()
         let processManager = ProcessManager(parser: parser)
         let viewModel = MainViewModel(processManager: processManager)
-        let contentView = ContentView(viewModel: viewModel)
+        let contentView = MainView(viewModel: viewModel)
         
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
         popover.contentSize = NSSize(width: 360, height: 360)

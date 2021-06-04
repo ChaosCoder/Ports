@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Ports
+
+  Created by Andreas Ganske on 02.06.21.
+  
+*/
+
+"quit" = "Beenden";
+"openWebsite" = "Website besuchen";

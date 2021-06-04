@@ -8,16 +8,16 @@
 import SwiftUI
 import ShellOut
 
-struct IdentiableError: Error, Identifiable {
+struct IdentifiableError: Error, Identifiable {
     var id: UUID
     var error: Error
     
     var localizedDescription: String { error.localizedDescription }
 }
 
-struct ContentView<ViewModelType: MainViewModelType>: View {
+struct MainView<ViewModelType: MainViewModelType>: View {
     @ObservedObject var viewModel: ViewModelType
-    @State var error: IdentiableError?
+    @State var error: IdentifiableError?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -101,9 +101,9 @@ class PreviewMainViewModel: MainViewModelType {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: PreviewMainViewModel())
+        MainView(viewModel: PreviewMainViewModel())
             .previewLayout(.fixed(width: 300, height: 600))
     }
 }
