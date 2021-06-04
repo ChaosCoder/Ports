@@ -82,14 +82,19 @@ struct ProcessView: View {
 }
 
 struct ProcessView_Previews: PreviewProvider {
+    
+    static let processA = Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv6, address: "127.0.0.1", port: 46040)])
+    static let processB = Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)])
+    static let longNameProcess = Process(pid: 1, name: "A process with an Adobe name", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)])
+    
     static var previews: some View {
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv6, address: "127.0.0.1", port: 46040)]), hovered: .constant(nil), error: .constant(nil))
+        ProcessView(item: processA, hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
+        ProcessView(item: processB, hovered: .constant(nil), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "processd", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
+        ProcessView(item: processA, hovered: .constant(processA), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
-        ProcessView(item: Process(pid: 1, name: "A process with an Adobe name", sockets: [Socket(fd: "1u", type: .IPv4, address: "0.0.0.0", port: 80)]), hovered: .constant(nil), error: .constant(nil))
+        ProcessView(item: longNameProcess, hovered: .constant(longNameProcess), error: .constant(nil))
             .previewLayout(.fixed(width: 300, height: 600))
     }
 }
