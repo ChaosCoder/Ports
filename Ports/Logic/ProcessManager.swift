@@ -14,26 +14,48 @@ struct ProcessList {
     var processes: [Process]
 }
 
-class ProcessManager: ObservableObject {
+protocol ProcessManagerType {
+    func enablePolling(_ enabled: Bool)
+}
+
+class ProcessManager: ProcessManagerType, ObservableObject {
+
     @Published private(set) var processList: ProcessList
-    
+    @Published private(set) var error: IdentifiableError?
+
     let parser: ProcessParser
     var timer: Timer?
-    
+
     init(parser: ProcessParser) {
         self.parser = parser
-        let output = try! shellOut(to: "/usr/sbin/lsof", arguments: ["-iTCP", "-sTCP:LISTEN", "-n", "-P", "-F"])
-        let processes = try! parser.parse(output: output)
-        processList = ProcessList(lastUpdated: Date(), processes: processes)
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [unowned self] _ in
-            let output = try! shellOut(to: "/usr/sbin/lsof", arguments: ["-iTCP", "-sTCP:LISTEN", "-n", "-P", "-F"])
-            let processes = try! self.parser.parse(output: output)
-            self.processList = ProcessList(lastUpdated: Date(), processes: processes)
-        }
+        self.processList = ProcessList(lastUpdated: Date(), processes: [])
+
+        updateProcessList()
     }
-    
+
     func update() {
         timer?.fire()
+    }
+
+    func enablePolling(_ enabled: Bool) {
+        timer?.invalidate()
+        if enabled {
+            updateProcessList()
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] _ in
+                updateProcessList()
+            }
+        } else {
+            timer = nil
+        }
+    }
+
+    func updateProcessList() {
+        do {
+            let output = try shellOut(to: "/usr/sbin/lsof", arguments: ["-iTCP", "-sTCP:LISTEN", "-n", "-P", "-F"])
+            let processes = try self.parser.parse(output: output)
+            self.processList = ProcessList(lastUpdated: Date(), processes: processes)
+        } catch {
+            self.error = IdentifiableError(error: error)
+        }
     }
 }

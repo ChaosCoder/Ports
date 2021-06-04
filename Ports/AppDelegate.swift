@@ -12,30 +12,20 @@ import ShellOut
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var popover = NSPopover()
-    
-    var statusBar: StatusBarController?
-    
+    var statusBarController: StatusBarController?
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         let parser = ProcessParser()
         let processManager = ProcessManager(parser: parser)
+
         let viewModel = MainViewModel(processManager: processManager)
-        let contentView = MainView(viewModel: viewModel)
-        
-        // Set the SwiftUI's ContentView to the Popover's ContentViewController
+        let mainView = MainView(viewModel: viewModel)
+
+        let popover = NSPopover()
         popover.contentSize = NSSize(width: 360, height: 360)
-        popover.contentViewController = NSHostingController(rootView: contentView)
+        popover.contentViewController = NSHostingController(rootView: mainView)
         popover.behavior = NSPopover.Behavior.transient
-        
-        // Create the Status Bar Item with the above Popover
-        statusBar = StatusBarController.init(popover)
+
+        statusBarController = StatusBarController(popover: popover, processManager: processManager)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-
 }
-

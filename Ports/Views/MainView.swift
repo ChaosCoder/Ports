@@ -9,9 +9,9 @@ import SwiftUI
 import ShellOut
 
 struct IdentifiableError: Error, Identifiable {
-    var id: UUID
+    var id: UUID = UUID()
     var error: Error
-    
+
     var localizedDescription: String { error.localizedDescription }
 }
 
@@ -19,7 +19,7 @@ struct MainView<ViewModelType: MainViewModelType>: View {
     @ObservedObject var viewModel: ViewModelType
     @State var error: IdentifiableError?
     @State var hoveredProcess: Process?
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             List(viewModel.processList.processes, id: \.id) { item in
@@ -33,10 +33,10 @@ struct MainView<ViewModelType: MainViewModelType>: View {
                 MenuButton(
                     label: Image(systemName: "gearshape.fill"),
                     content: {
-                        Button(LocalizedString("openWebsite")) {
+                        Button(localizedString("openWebsite")) {
                             NSWorkspace.shared.open(URL(string: "https://chaosspace.de/ports?utm_source=portsapp")!)
                         }
-                        Button(LocalizedString("quit")) {
+                        Button(localizedString("quit")) {
                             exit(0)
                         }
                     })
@@ -55,7 +55,7 @@ struct MainView<ViewModelType: MainViewModelType>: View {
 protocol MainViewModelType: ObservableObject {
     var processList: ProcessList { get }
     var lastUpdateFormatter: DateFormatter { get }
-    
+
     func update()
 }
 
@@ -68,36 +68,43 @@ class MainViewModel: ObservableObject, MainViewModelType {
         self.processList = ProcessList(lastUpdated: Date(), processes: [])
         processManager.$processList.assign(to: &$processList)
     }
-    
+
     var lastUpdateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .medium
         return formatter
     }()
-    
+
     func update() {
         self.processManager.update()
     }
 }
 
 class PreviewMainViewModel: MainViewModelType {
-    var processList: ProcessList = ProcessList(lastUpdated: Date(),
-                                               processes: [Process(pid: 1,
-                                                                   name: "A longer process name",
-                                                                   sockets: [Socket(fd: "1u", type: .IPv4, address: "127.0.0.1", port: 1337),
-                                                                             Socket(fd: "1u", type: .IPv6, address: "*", port: 8080)]),
-                                                           Process(pid: 2,
-                                                                   name: "xcodecd",
-                                                                   sockets: [Socket(fd: "2u", type: .IPv4, address: "127.0.0.1", port: 8080)])])
-    
+
+    let processList: ProcessList
+
+    init() {
+        let processA = Process(pid: 1,
+                               name: "A longer process name",
+                               sockets: [Socket(fd: "1u", type: .IPv4, address: "127.0.0.1", port: 1337),
+                                         Socket(fd: "1u", type: .IPv6, address: "*", port: 8080)])
+        let processB = Process(pid: 2,
+                               name: "xcodecd",
+                               sockets: [Socket(fd: "2u", type: .IPv4, address: "127.0.0.1", port: 8080)])
+
+        processList = ProcessList(lastUpdated: Date(),
+                                  processes: [processA, processB])
+    }
+
     var lastUpdateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .medium
         return formatter
     }()
-    
+
     func update() {
     }
 }

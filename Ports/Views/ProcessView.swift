@@ -10,18 +10,18 @@ import SwiftUI
 import ShellOut
 
 struct ProcessView: View {
-    
+
     var item: Process
-    
+
     @Binding var hovered: Process?
     @Binding var error: IdentifiableError?
-    
+
     static let portFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.hasThousandSeparators = false
         return formatter
     }()
-    
+
     var body: some View {
         HStack(alignment: .top) {
             HStack(alignment: .firstTextBaseline) {
@@ -93,4 +93,3 @@ struct ProcessView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 300, height: 600))
     }
 }
-

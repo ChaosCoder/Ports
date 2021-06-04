@@ -7,11 +7,11 @@
 
 import Foundation
 
-func LocalizedString(_ key: String, comment: String? = nil, bundle: Bundle = Bundle.main) -> String {
+func localizedString(_ key: String, comment: String? = nil, bundle: Bundle = Bundle.main) -> String {
     return NSLocalizedString(key, bundle: bundle, comment: comment ?? "")
 }
 
-func LocalizedFormattedString(_ key: String, _ formatted: String...) -> String {
-    let formatString = LocalizedString(key)
-    return String.init(format: formatString, arguments: formatted)
+func localizedFormattedString(_ key: String, _ formatted: String...) -> String {
+    let formatString = localizedString(key)
+    return String(format: formatString, arguments: formatted)
 }
