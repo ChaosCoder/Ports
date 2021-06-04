@@ -25,7 +25,7 @@ class StatusBarController: NSObject, NSPopoverDelegate {
         popover.delegate = self
         
         if let statusBarButton = statusItem.button {
-            statusBarButton.image = NSImage(named: "DataConsent")
+            statusBarButton.image = NSImage(named: "MenuBarIcon")
             statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
             statusBarButton.image?.isTemplate = true
             statusBarButton.setButtonType(.onOff)

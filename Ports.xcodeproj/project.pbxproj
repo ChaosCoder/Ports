@@ -16,10 +16,10 @@
 		7D8D68852643393E00FBFBDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8D68842643393E00FBFBDE /* Preview Assets.xcassets */; };
 		7D8D68882643393E00FBFBDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8D68862643393E00FBFBDE /* Main.storyboard */; };
 		7D8D68912643399000FBFBDE /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D68902643399000FBFBDE /* StatusBarController.swift */; };
-		7D8D689326433B8200FBFBDE /* DataConsent.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D8D689226433B8200FBFBDE /* DataConsent.png */; };
 		7D8D689726433FB300FBFBDE /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8D689626433FB300FBFBDE /* ShellOut */; };
 		7D8D689C26434CB400FBFBDE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D689B26434CB400FBFBDE /* Process.swift */; };
 		7D962BB2266A9DB500E75CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D962BB1266A9DB500E75CCC /* Preview Assets.xcassets */; };
+		7D962BB6266AA7E000E75CCC /* MenuBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D962BB5266AA7E000E75CCC /* MenuBarIcon.png */; };
 		7DAD2EDA2649AF0A00BD13D7 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */; };
 		7DE4F9FA266821BD00563FBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4F9F9266821BD00563FBB /* Localized.swift */; };
 		7DE4F9FD2668222600563FBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE4F9FF2668222600563FBB /* Localizable.strings */; };
@@ -38,10 +38,10 @@
 		7D8D68892643393E00FBFBDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D8D688A2643393E00FBFBDE /* Ports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ports.entitlements; sourceTree = "<group>"; };
 		7D8D68902643399000FBFBDE /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		7D8D689226433B8200FBFBDE /* DataConsent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DataConsent.png; sourceTree = "<group>"; };
 		7D8D689B26434CB400FBFBDE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		7D962BAC266A9A1A00E75CCC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7D962BB1266A9DB500E75CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7D962BB5266AA7E000E75CCC /* MenuBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon.png; sourceTree = "<group>"; };
 		7DAD2ED92649AF0A00BD13D7 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
 		7DE4F9F9266821BD00563FBB /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		7DE4F9FE2668222600563FBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -94,11 +94,11 @@
 		7D8D689426433B8800FBFBDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D962BB5266AA7E000E75CCC /* MenuBarIcon.png */,
 				7D8D68812643393E00FBFBDE /* Assets.xcassets */,
 				7D8D68862643393E00FBFBDE /* Main.storyboard */,
 				7DE4F9FF2668222600563FBB /* Localizable.strings */,
 				7D8D68842643393E00FBFBDE /* Preview Assets.xcassets */,
-				7D8D689226433B8200FBFBDE /* DataConsent.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -214,8 +214,8 @@
 			files = (
 				7DE4F9FD2668222600563FBB /* Localizable.strings in Resources */,
 				7D8D68882643393E00FBFBDE /* Main.storyboard in Resources */,
+				7D962BB6266AA7E000E75CCC /* MenuBarIcon.png in Resources */,
 				7D8D68852643393E00FBFBDE /* Preview Assets.xcassets in Resources */,
-				7D8D689326433B8200FBFBDE /* DataConsent.png in Resources */,
 				7D962BB2266A9DB500E75CCC /* Preview Assets.xcassets in Resources */,
 				7D8D68822643393E00FBFBDE /* Assets.xcassets in Resources */,
 			);
