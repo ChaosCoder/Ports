@@ -38,12 +38,8 @@ struct ProcessView: View {
                         self.error = IdentifiableError(id: UUID(), error: error)
                     }
                 }, label: {
-                    if hovered == item {
-                        Image(systemName: "xmark.circle.fill")
-                    } else {
-                        Image(systemName: "xmark.circle.fill")
-                            .hidden()
-                    }
+                    Image(systemName: "xmark.circle.fill")
+                        .opacity(hovered == item ? 1.0 : 0.0)
                 })
                 .buttonStyle(PlainButtonStyle())
                 .foregroundColor(.secondary)
