@@ -28,6 +28,7 @@ struct MainView<ViewModelType: MainViewModelType>: View {
                         viewModel.update()
                     }
             }
+            .listStyle(.sidebar)
             HStack {
                 Spacer()
                 MenuButton(
